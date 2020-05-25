@@ -22,13 +22,15 @@ export const useStore = () => {
       listeners = listeners.filter(li => li !== setState);
     }
   }, [setState]);
+  console.log(globalState);
 
   return [globalState, dispatch];
+
 };
 
 export const initStore = (userActions, initialState) => {
-  if (initialState !== null) {
-    globalState = { ...globalState, initialState };
+  if (initialState) {
+    globalState = { ...globalState, ...initialState };
   };
   actions = {...actions, ...userActions};
 };
