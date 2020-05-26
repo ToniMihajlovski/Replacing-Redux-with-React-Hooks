@@ -5,15 +5,17 @@ import {useStore} from '../../hooks-store/store';
 import './ProductItem.css';
 
 
-const ProductItem = props => {
+const ProductItem = React.memo(props => {
 
-  const dispatch = useStore()[1];
+  const dispatch = useStore(false)[1];
   // const toggleFav = useContext(ProductsContext).toggleFav;
 
   const toggleFavHandler = () => {
     // toggleFav(props.id);
     dispatch('TOGGLE_FAV', props.id);
   };
+
+  console.log('RENDERING');
 
   return (
     <Card style={{ marginBottom: '1rem' }}>
@@ -29,6 +31,6 @@ const ProductItem = props => {
       </div>
     </Card>
   );
-};
+});
 
 export default ProductItem;
